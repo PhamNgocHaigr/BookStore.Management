@@ -1,0 +1,100 @@
+﻿@using System.Security.Claims
+
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<!-- HEADER DESKTOP-->
+<header class="header-desktop3 d-none d-lg-block">
+    <div class="section__content section__content--p35">
+        <div class="header3-wrap">
+            <div class="header__logo">
+                <a href="#">
+                    <img src="~/admin/assets/images/icon/logo-white.png" alt="CoolAdmin" />
+                </a>
+            </div>
+            <div class="header__navbar">
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-shopping-basket"></i>
+                            <span class="bot-line"></span>eCommerce
+                        </a>
+                    </li>
+                    <li>
+                        <a href="table.html">
+                            <i class="fas fa-trophy"></i>
+                            <span class="bot-line"></span>Features
+                        </a>
+                    </li>
+                    <li class="has-sub">
+                        <a href="#">
+                            <i class="fas fa-copy"></i>
+                            <span class="bot-line"></span>Pages
+                        </a>
+                        <ul class="header3-sub-list list-unstyled">
+                            <li>
+                                <a href="login.html">Login</a>
+                            </li>
+                            <li>
+                                <a href="register.html">Register</a>
+                            </li>
+                            <li>
+                                <a href="forget-pass.html">Forget Password</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="header__tool">
+                <div class="account-wrap">
+                    <div class="account-item account-item--style2 clearfix js-item-menu">
+                        <div class="image">
+                            <img src="~/admin/assets/images/icon/avatar-01.jpg" alt="John Doe" />
+                        </div>
+                        <div class="content">
+                            <a class="js-acc-btn" href="#">@User.Identity?.Name</a>
+                        </div>
+                        <div class="account-dropdown js-dropdown">
+                            <div class="info clearfix">
+                                <div class="image">
+                                    <a href="#">
+                                        <img src="~/admin/assets/images/icon/avatar-01.jpg" alt="John Doe" />
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h5 class="name">
+                                        <a>@User.Identity?.Name</a>
+                                    </h5>
+                                    <span class="email">@User.FindFirst(ClaimTypes.Email)?.Value</span>
+                                </div>
+                            </div>
+                            <div class="account-dropdown__body">
+                                <div class="account-dropdown__item">
+                                    <a href="#">
+                                        <i class="zmdi zmdi-account"></i>Account
+                                    </a>
+                                </div>
+                                <div class="account-dropdown__item">
+                                    <a href="#">
+                                        <i class="zmdi zmdi-settings"></i>Setting
+                                    </a>
+                                </div>
+                                <div class="account-dropdown__item">
+                                    <a href="#">
+                                        <i class="zmdi zmdi-money-box"></i>Billing
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="account-dropdown__footer">
+                                <a asp-controller="authentication" asp-action="logout">
+                                    <i class="zmdi zmdi-power" ></i>Logout
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
