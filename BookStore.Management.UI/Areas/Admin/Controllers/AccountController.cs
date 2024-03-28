@@ -9,5 +9,10 @@ namespace BookStore.Management.UI.Areas.Admin.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult GetAccountPagination()
+        {
+            return Json(1);
+        }
     }
 }
