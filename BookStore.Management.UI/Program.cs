@@ -13,6 +13,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.ConfigureIdentity(builder.Configuration);
 builder.Services.AddDependencyInjection();
 builder.Services.AddControllersWithViews();
+builder.Services.AddAutoMapper();
 
 var app = builder.Build();
 app.AutoMigration().GetAwaiter().GetResult();

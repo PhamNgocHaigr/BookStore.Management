@@ -1,0 +1,45 @@
+﻿@using BookStore.Management.UI.Models
+@{
+    var breadscrumModel = ViewData["Breadscrumb"] as BreadscrumModel;
+
+    if(!string.IsNullOrEmpty(breadscrumModel.Path))
+    {
+        var segments = breadscrumModel.Path.Split("/");
+
+
+
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-5 align-self-center">
+                    <h4 class="page-title">@breadscrumModel.Title</h4>
+                    <div class="d-flex align-items-center">
+                    </div>
+                </div>
+                <div class="col-7 align-self-center">
+                    <div class="d-flex no-block justify-content-end align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                @{
+                                    foreach (var segment in segments)
+                                    {
+                                        if(!string.IsNullOrEmpty(segment))
+                                        {
+                                            <li class="breadcrumb-item">
+                                                @segment
+                                            </li>
+                                        } 
+                                    }
+                                }
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+}
+
+
+
+

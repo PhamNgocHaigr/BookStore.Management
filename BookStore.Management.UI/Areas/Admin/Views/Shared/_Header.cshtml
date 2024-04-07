@@ -1,100 +1,77 @@
-﻿@using System.Security.Claims
+﻿<header class="topbar" data-navbarbg="skin6">
+    <nav class="navbar top-navbar navbar-expand-md">
+        <div class="navbar-header" data-logobg="skin6">
+            <!-- This is for the sidebar toggle which is visible on mobile only -->
+            <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
+                <i class="ti-menu ti-close"></i>
+            </a>
 
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
-<!-- HEADER DESKTOP-->
-<header class="header-desktop3 d-none d-lg-block">
-    <div class="section__content section__content--p35">
-        <div class="header3-wrap">
-            <div class="header__logo">
-                <a href="#">
-                    <img src="~/admin/assets/images/icon/logo-white.png" alt="CoolAdmin" />
+            <div class="navbar-brand">
+                <!-- Logo icon -->
+                <a asp-action="" asp-controller="dashboard">
+                    <b class="logo-icon">
+                        <!-- Dark Logo icon -->
+                        <img src="~/admin/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                        <!-- Light Logo icon -->
+                        <img src="~/admin/assets/images/logo-icon.png" alt="homepage" class="light-logo" />
+                    </b>
+                    <!--End Logo icon -->
+                    <!-- Logo text -->
+                    <span class="logo-text">
+                        <!-- dark Logo text -->
+                        <img src="~/admin/assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                        <!-- Light Logo text -->
+                        <img src="~/admin/assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+                    </span>
                 </a>
             </div>
-            <div class="header__navbar">
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#">
-                            <i class="fas fa-shopping-basket"></i>
-                            <span class="bot-line"></span>eCommerce
-                        </a>
-                    </li>
-                    <li>
-                        <a href="table.html">
-                            <i class="fas fa-trophy"></i>
-                            <span class="bot-line"></span>Features
-                        </a>
-                    </li>
-                    <li class="has-sub">
-                        <a href="#">
-                            <i class="fas fa-copy"></i>
-                            <span class="bot-line"></span>Pages
-                        </a>
-                        <ul class="header3-sub-list list-unstyled">
-                            <li>
-                                <a href="login.html">Login</a>
-                            </li>
-                            <li>
-                                <a href="register.html">Register</a>
-                            </li>
-                            <li>
-                                <a href="forget-pass.html">Forget Password</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div class="header__tool">
-                <div class="account-wrap">
-                    <div class="account-item account-item--style2 clearfix js-item-menu">
-                        <div class="image">
-                            <img src="~/admin/assets/images/icon/avatar-01.jpg" alt="John Doe" />
-                        </div>
-                        <div class="content">
-                            <a class="js-acc-btn" href="#">@User.Identity?.Name</a>
-                        </div>
-                        <div class="account-dropdown js-dropdown">
-                            <div class="info clearfix">
-                                <div class="image">
-                                    <a href="#">
-                                        <img src="~/admin/assets/images/icon/avatar-01.jpg" alt="John Doe" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <h5 class="name">
-                                        <a>@User.Identity?.Name</a>
-                                    </h5>
-                                    <span class="email">@User.FindFirst(ClaimTypes.Email)?.Value</span>
-                                </div>
-                            </div>
-                            <div class="account-dropdown__body">
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-account"></i>Account
-                                    </a>
-                                </div>
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-settings"></i>Setting
-                                    </a>
-                                </div>
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-money-box"></i>Billing
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="account-dropdown__footer">
-                                <a asp-controller="authentication" asp-action="logout">
-                                    <i class="zmdi zmdi-power" ></i>Logout
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
+            <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)"
+               data-toggle="collapse" data-target="#navbarSupportedContent"
+               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="ti-more"></i>
+            </a>
         </div>
-    </div>
+        <!-- ============================================================== -->
+        <!-- End Logo -->
+        <!-- ============================================================== -->
+        <div class="navbar-collapse collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item d-none d-md-block">
+                    <a class="nav-link" href="javascript:void(0)">
+                        <form>
+                            <div class="customize-input">
+                                <input class="form-control custom-shadow custom-radius border-0 bg-white"
+                                       type="search" placeholder="Search" aria-label="Search">
+                                <i class="form-control-icon" data-feather="search"></i>
+                            </div>
+                        </form>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <img src="~/admin/assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle" width="40">
+                        <span class="ml-2 d-none d-lg-inline-block">
+                            <span>Hello,</span> <span class="text-dark">@User.Identity?.Name</span>
+                            <i data-feather="chevron-down" class="svg-icon"></i>
+                        </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
+                        <a class="dropdown-item" href="javascript:void(0)">
+                            <i data-feather="user"
+                               class="svg-icon mr-2 ml-1"></i>
+                            My Profile
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" asp-controller="authentication" asp-action="logout">
+                            <i data-feather="power"
+                               class="svg-icon mr-2 ml-1"></i>
+                            Logout
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </header>

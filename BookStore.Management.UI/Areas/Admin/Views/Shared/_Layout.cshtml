@@ -1,129 +1,62 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html dir="ltr" lang="en">
 
 <head>
-    <!-- Required meta tags-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="au theme template">
-    <meta name="author" content="Ngoc Hai">
-    <meta name="keywords" content="au theme template">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/admin/assets/images/favicon.png">
+    <title>Admin </title>
+    <!-- Custom CSS -->
+    <!-- Custom CSS -->
+    <link href="~/admin/dist/css/style.min.css" rel="stylesheet" />
+    <link href="~/js/toaster/jquery.toast.min.css" rel="stylesheet" />
 
-    <!-- Title Page-->
-    <title>Dashboard 4</title>
-    
-    <!-- Fontfaces CSS-->
-    <link href="~/admin/assets/css/font-face.css" rel="stylesheet" media="all" />
-    <link href="~/admin/assets/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all" />
-    <link href="~/admin/assets/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all" />
-    <link href="~/admin/assets/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all" />
-
-    <!-- Bootstrap CSS-->
-    <link href="~/admin/assets/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all" />
-    <!-- Vendor CSS-->
-    <link href="~/admin/assets/vendor/animsition/animsition.min.css" rel="stylesheet" media="all" />
-    <link href="~/admin/assets/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all" />
-    <link href="~/admin/assets/vendor/wow/animate.css" rel="stylesheet" media="all" />
-    <link href="~/admin/assets/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all" />
-    <link href="~/admin/assets/vendor/slick/slick.css" rel="stylesheet" media="all" />
-    <link href="~/admin/assets/vendor/select2/select2.min.css" rel="stylesheet" media="all" />
-    <link href="~/admin/assets/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all" />
-
-    <!-- Main CSS-->
-    <link href="~/admin/assets/css/theme.css" rel="stylesheet" media="all" />
 </head>
 
-<body class="animsition">
-    <div class="page-wrapper">
-        <partial name="_Header.cshtml" />
-        <!-- END HEADER DESKTOP-->
-        <!-- PAGE CONTENT-->
-        <div class="page-content--bgf7">
-            <!-- BREADCRUMB-->
-            <section class="au-breadcrumb2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="au-breadcrumb-content">
-                                <div class="au-breadcrumb-left">
-                                    <span class="au-breadcrumb-span">You are here:</span>
-                                    <ul class="list-unstyled list-inline au-breadcrumb__list">
-                                        <li class="list-inline-item active">
-                                            <a href="#">Home</a>
-                                        </li>
-                                        <li class="list-inline-item seprate">
-                                            <span>/</span>
-                                        </li>
-                                        <li class="list-inline-item">Dashboard</li>
-                                    </ul>
-                                </div>
-                                <form class="au-form-icon--sm" action="" method="post">
-                                    <input class="au-input--w300 au-input--style2" type="text" placeholder="Search for datas &amp; reports...">
-                                    <button class="au-btn--submit2" type="submit">
-                                        <i class="zmdi zmdi-search"></i>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- END BREADCRUMB-->
-            <!-- WELCOME-->
-            <section class="welcome p-t-10">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1 class="title-4">
-                                @RenderBody()
-                            </h1>
-                            <hr class="line-seprate">
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- END WELCOME-->
-            <!-- COPYRIGHT-->
-            <section class="p-t-60 p-b-20">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="copyright">
-                                <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- END COPYRIGHT-->
-        </div>
+<body>
 
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
     </div>
 
-    <!-- Jquery JS-->
-    @await RenderSectionAsync("Scripts", required: false)
-    <script src="~/admin/assets/vendor/jquery-3.2.1.min.js"></script>
-    <!-- Bootstrap JS-->
-    <script src="~/admin/assets/vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="~/admin/assets/vendor/bootstrap-4.1/bootstrap.min.js"></script>
-    <!-- Vendor JS       -->
-    <script src="~/admin/assets/vendor/slick/slick.min.js"></script>
-    <script src="~/admin/assets/vendor/wow/wow.min.js"></script>
-    <script src="~/admin/assets/vendor/animsition/animsition.min.js"></script>
-    <script src="~/admin/assets/vendor/bootstrap-progressbar/perfect-scrollbar.jquery.min.js"></script>
-    <script src="~/admin/assets/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-    <script src="~/admin/assets/vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="~/admin/assets/vendor/counter-up/jquery.counterup.min.js"></script>
-    <script src="~/admin/assets/vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="~/admin/assets/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="~/admin/assets/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="~/admin/assets/vendor/chartjs/chart.bundle.min.js"></script>
-    <script src="~/admin/assets/vendor/select2/select2.min.js"></script>
-    </script>
+    <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+         data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
+        @await Html.PartialAsync("_Header.cshtml")
+ 
+        @await Html.PartialAsync("_leftsidebar.cshtml")
 
-    <!-- Main JS-->
-    <script src="~/admin/assets/js/main.js"></script>
+        <div class="page-wrapper">
+                <!--BODY -->
+                @RenderBody()
+                @await Html.PartialAsync("_BreadScrum.cshtml")
+
+        </div>
+    </div>
+
+    <script src="~/admin/assets/libs/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/admin/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/toaster/jquery.toast.min.js"></script>
+    <!-- apps -->
+    <!-- apps -->
+    <script src="~/admin/dist/js/app-style-switcher.js"></script>
+
+    <script src="~/admin/dist/js/feather.min.js"></script>
+
+    <script src="~/admin/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+ 
+    <script src="~/admin/dist/js/custom.min.js"></script>
+    <!--This page JavaScript -->
+    <script src="~/js/toaster/common.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 
 </html>
-<!-- end document-->

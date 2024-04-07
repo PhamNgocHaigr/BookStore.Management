@@ -14,6 +14,7 @@ namespace BookStore.Management.Domain.Entities
         public string? Fullname { get; set; }
         [StringLength(1000)]
         public string? Address { get; set; }
+        public string? MobilePhone { get; set; }
         [Required]
         public bool IsActive { get; set; }
     }
