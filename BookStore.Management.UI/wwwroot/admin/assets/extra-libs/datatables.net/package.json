@@ -29,7 +29,7 @@
   "bugs": {
     "url": "https://datatables.net/forums"
   },
-  "bundleDependencies": false,
+  "bundleDependencies": [],
   "dependencies": {
     "jquery": ">=1.7"
   },
@@ -54,5 +54,8 @@
     "type": "git",
     "url": "git+https://github.com/DataTables/Dist-DataTables.git"
   },
-  "version": "1.10.19"
+  "version": "1.10.19",
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  }
 }
