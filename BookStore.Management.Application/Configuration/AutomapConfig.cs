@@ -16,6 +16,7 @@ namespace BookStore.Management.Application.Configuration
             CreateMap<ApplicationUser, AccountDTO>()
                 .ForMember(dest => dest.Phone, source => source.MapFrom(src => src.PhoneNumber))
                 .ReverseMap();
+            CreateMap<Genre, GenreDTO>().ReverseMap(); 
         }
     }
 }

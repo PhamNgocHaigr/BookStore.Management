@@ -17,7 +17,7 @@ namespace BookStore.Management.UI.Areas.Admin.Controllers
             _roleService = roleService;
   
         }
-        [BreadScrum("Account List", "App")]
+        [BreadScrum("Account List", "Application")] 
         public IActionResult Index()
         {
             return View();
@@ -30,6 +30,7 @@ namespace BookStore.Management.UI.Areas.Admin.Controllers
             return Json(data);
         }
         [HttpGet]
+        [BreadScrum("Account Form", "Application")] 
         public async Task<IActionResult> SaveData(string id)
         {
             AccountDTO accountDto = !string.IsNullOrEmpty(id) ? await _userService.GetUserById(id) : new();
@@ -41,6 +42,7 @@ namespace BookStore.Management.UI.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [BreadScrum("Account Form", "Application")]
         public async Task<IActionResult> SaveData(AccountDTO accountDTO)
         {
             if (!ModelState.IsValid)

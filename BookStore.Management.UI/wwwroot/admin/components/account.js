@@ -2,7 +2,7 @@
     const elementName = "#tbl-account";
     const columns = [
         {
-            data: 'id', name: 'id', width: '50',
+            data: 'id', name: 'id', width: '30',
             render: function (key) {
                 return `
                     <span data-key="${key}">

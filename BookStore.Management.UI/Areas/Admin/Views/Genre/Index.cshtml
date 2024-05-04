@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Genre List";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@await Html.PartialAsync("~/Areas/Admin/Views/Shared/_BreadScrum.cshtml")
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <!-- Custom CSS -->
+            <!-- basic table -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="tbl-genre" class="table table-striped table-bordered no-wrap" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <td class="text-center"><a href="/admin/genre/savedata" title="Add"><i class="fas fa-plus-circle"</i></a></td>
+                                            <td>Name</td>   
+                                            <td>Description</td>
+                                            <td>IsActive</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- order table -->
+<link href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+@section scripts {
+    <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="~/js/registerdatatable.js"></script>
+    <script src="~/admin/components/genre.js"></script>
+}

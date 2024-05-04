@@ -5,12 +5,13 @@ using BookStore.Management.DataAccess.Data;
 using BookStore.Management.DataAccess.Repository;
 using BookStore.Management.Domain.Abstract;
 using BookStore.Management.Domain.Entities;
+using BookStore.Management.Infrastructure.Image;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Hosting;
+
 
 
 namespace BookStore.Management.Infrastructure.Configuration
@@ -24,11 +25,10 @@ namespace BookStore.Management.Infrastructure.Configuration
                 ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
-
             services.AddIdentity<ApplicationUser, IdentityRole>()
                         .AddEntityFrameworkStores<ApplicationDbContext>()
                         .AddDefaultTokenProviders();
-
+            
             services.ConfigureApplicationCookie(options =>
             {
                 options.Cookie.Name = "BookStoreCookie";
@@ -53,8 +53,8 @@ namespace BookStore.Management.Infrastructure.Configuration
             services.AddTransient<IAuthenticationService, AuthenticationService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRoleService, RoleService>();
-
-            //services.AddTransient<IGenreService, GenreService>();
+            services.AddTransient<IGenreService, GenreService>();
+  
         }
 
         public static void AddAutoMapper(this IServiceCollection services)
@@ -62,5 +62,6 @@ namespace BookStore.Management.Infrastructure.Configuration
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
+      
     }
 }

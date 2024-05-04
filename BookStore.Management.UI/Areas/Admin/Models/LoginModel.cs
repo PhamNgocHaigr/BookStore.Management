@@ -10,6 +10,5 @@ namespace BookStore.Management.UI.Areas.Admin.Models
         [MinLength(3, ErrorMessage ="Password must be greater than 3 characters")]
         public string Password { get; set; }
         public bool HasRememberMe { get; set; }
-        
     }
 }

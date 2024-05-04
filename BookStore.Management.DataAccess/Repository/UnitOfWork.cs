@@ -14,6 +14,7 @@ namespace BookStore.Management.DataAccess.Repository
 
         private IBookRepository? _bookRepository;
         private IGenreRepository? _genreRepository;
+        private bool disposedValue;
 
         public UnitOfWork(ApplicationDbContext applicationDbContext)
         {
@@ -30,12 +31,21 @@ namespace BookStore.Management.DataAccess.Repository
             await _applicationDbContext.SaveChangesAsync();
         }
 
+        public virtual void Dispose(bool disposing)
+        {
+            if(!disposedValue)
+            {
+                if (disposing)
+                {
+                    _applicationDbContext.Dispose();
+                }
+                disposedValue = true;
+            }  
+        }
         public void Dispose()
         {
-            if(_applicationDbContext != null)
-            {
-                _applicationDbContext.Dispose();
-            }
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }

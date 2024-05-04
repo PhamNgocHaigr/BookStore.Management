@@ -4,6 +4,7 @@
     ViewData["Title"] = "Account Form";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+@await Html.PartialAsync("~/Areas/Admin/Views/Shared/_BreadScrum.cshtml")
 <h3>@(string.IsNullOrEmpty(Model.Id) ? "Add Account Form" : "Update Account Form")</h3>
 
 <form asp-controller="account" asp-action="savedata" asp-antiforgery="true" method="post" enctype="multipart/form-data">

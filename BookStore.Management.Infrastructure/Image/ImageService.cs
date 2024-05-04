@@ -1,9 +1,17 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 
-namespace BookStore.Management.Application.Services
+
+namespace BookStore.Management.Infrastructure.Image
 {
     public class ImageService : IImageService
     {
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
+        public ImageService(IWebHostEnvironment webHostEnvironment)
+        {
+            _webHostEnvironment = webHostEnvironment;
+        }
 
         public async Task<bool> SaveImage(List<IFormFile> images, string path, string? defautName)
         {
@@ -14,7 +22,7 @@ namespace BookStore.Management.Application.Services
                     return default;
                 }
 
-                string pathImage = Path.Combine(Directory.GetCurrentDirectory(), path);
+                string pathImage = Path.Combine(_webHostEnvironment.WebRootPath, path);
 
                 if (!Directory.Exists(pathImage))
                 {
@@ -39,9 +47,6 @@ namespace BookStore.Management.Application.Services
             }
 
             return true;
-
-
-
         }
     }
 }
