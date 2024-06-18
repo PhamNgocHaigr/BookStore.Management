@@ -12,6 +12,6 @@ namespace BookStore.Management.Application.DTOs
         public bool Status { get; set; }
         public string Message { get; set; }
         public object Data { get; set; }
-        public ActionType Action { get; set; }  = ActionType.Get;
+        public ActionType Action { get; set; }  = ActionType.Get;   
     }
 }

@@ -8178,7 +8178,7 @@ Table Cell
  Breadcrumb and page title
 *******************/
 .page-breadcrumb {
-  padding: 30px 35px 0; }
+  padding: 0px 35px 0; }
   .page-breadcrumb .breadcrumb {
     background: transparent;
     font-size: .875rem; }

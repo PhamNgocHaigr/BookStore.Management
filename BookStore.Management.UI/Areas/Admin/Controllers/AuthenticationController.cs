@@ -1,12 +1,14 @@
 ﻿using BookStore.Management.Application.Abstracts;
 using BookStore.Management.Domain.Entities;
 using BookStore.Management.UI.Areas.Admin.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.Management.UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [AllowAnonymous] 
     public class AuthenticationController : Controller
     {
         private readonly IAuthenticationService _authenticationService;
@@ -42,7 +44,7 @@ namespace BookStore.Management.UI.Areas.Admin.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Dashboard");
                 }    
             }
             else

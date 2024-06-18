@@ -1,0 +1,42 @@
+﻿@model BookStore.Management.Application.DTOs.ViewModels.GenreViewModel
+<!-- Modal -->
+<div class="modal fade" id="genre-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" >
+    <form asp-action="savedata" asp-controller="genre" method="post" asp-antiforgery="true" id="fromGenre">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Genre Form</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label for="exampleInputEmail">Name</label>
+                        <input type="text" class="form-control" asp-for="Name" placeholder="Name" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail">Description</label>
+                        <input type="text" class="form-control" asp-for="Description" placeholder="Description" />
+
+                    </div>
+                    <div class="form-group">
+                        <fieldset class="checkbox">
+                            <label>
+                                  <input type="checkbox" checked asp-for="IsActive"> Is Active
+                            </label>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+  
+</div>

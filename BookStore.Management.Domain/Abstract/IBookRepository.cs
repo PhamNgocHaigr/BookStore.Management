@@ -8,5 +8,6 @@ namespace BookStore.Management.Domain.Abstract
 {
     public interface IBookRepository
     {
+        Task<(IEnumerable<T>, int)> GetBooksByPaginationAsync<T>(int pageIndex, int pageSize, string keyword);
     }
 }

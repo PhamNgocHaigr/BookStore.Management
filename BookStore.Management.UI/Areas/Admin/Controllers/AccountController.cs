@@ -1,11 +1,13 @@
 ﻿using BookStore.Management.Application.Abstracts;
 using BookStore.Management.Application.DTOs;
 using BookStore.Management.UI.Ultility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.Management.UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class AccountController : Controller
     {
         private readonly IUserService _userService;

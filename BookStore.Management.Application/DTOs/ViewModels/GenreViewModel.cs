@@ -5,16 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookStore.Management.Domain.Entities
+namespace BookStore.Management.Application.DTOs.ViewModels
 {
-    public class Genre : BaseEntity
+    public class GenreViewModel
     {
-        [Required]
-        [StringLength(500)]
+        public int? Id { get; set; } = 0;
+        [Required(ErrorMessage = "Genre name must not empty")]
         public string Name { get; set; }
-        [StringLength(1000)]
         public string? Description { get; set; }
-        [Required]
         public bool IsActive { get; set; }
         public DateTime CreateOn { get; set; }
     }

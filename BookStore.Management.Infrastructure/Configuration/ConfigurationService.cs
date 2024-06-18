@@ -1,6 +1,7 @@
 ﻿using BookStore.Management.Application;
 using BookStore.Management.Application.Abstracts;
 using BookStore.Management.Application.Services;
+using BookStore.Management.DataAccess.Dapper;
 using BookStore.Management.DataAccess.Data;
 using BookStore.Management.DataAccess.Repository;
 using BookStore.Management.Domain.Abstract;
@@ -34,13 +35,14 @@ namespace BookStore.Management.Infrastructure.Configuration
                 options.Cookie.Name = "BookStoreCookie";
                 options.ExpireTimeSpan = TimeSpan.FromHours(8);
                 options.LoginPath = "/admin/authentication/login";
+                options.SlidingExpiration = true; 
 
                 //options.AccessDeniedPath = "/";
             });
             services.Configure<IdentityOptions>(options =>
             {
                 options.Lockout.AllowedForNewUsers = true;
-                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
                 options.Lockout.MaxFailedAccessAttempts = 3;
             });
         }
@@ -48,13 +50,17 @@ namespace BookStore.Management.Infrastructure.Configuration
         public static void AddDependencyInjection(this IServiceCollection services)
         {
             services.AddTransient<PasswordHasher<ApplicationUser>>();
+            services.AddTransient<ISQLQueryHandler, SQLQueryHandler>();
             services.AddTransient<IUnitOfWork,UnitOfWork>();
             services.AddTransient<IImageService, ImageService>();
             services.AddTransient<IAuthenticationService, AuthenticationService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<IGenreService, GenreService>();
-  
+            services.AddTransient<IBookService, BookService>();
+
+
+
         }
 
         public static void AddAutoMapper(this IServiceCollection services)

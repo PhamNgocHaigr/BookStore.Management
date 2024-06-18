@@ -12,16 +12,19 @@ namespace BookStore.Management.DataAccess.Repository
     {
         private readonly ApplicationDbContext _applicationDbContext;
 
+        private readonly ISQLQueryHandler _sqlQueryHandler;
+        
         private IBookRepository? _bookRepository;
         private IGenreRepository? _genreRepository;
         private bool disposedValue;
 
-        public UnitOfWork(ApplicationDbContext applicationDbContext)
+        public UnitOfWork(ApplicationDbContext applicationDbContext, ISQLQueryHandler sqLQueryHandler)
         {
             _applicationDbContext = applicationDbContext;
+            _sqlQueryHandler = sqLQueryHandler;
         }
 
-        public IBookRepository BookRepository => _bookRepository ??= new BookRepository(_applicationDbContext);
+        public IBookRepository BookRepository => _bookRepository ??= new BookRepository(_applicationDbContext, _sqlQueryHandler);
         public IGenreRepository GenreRepository => _genreRepository ??= new GenreRepository(_applicationDbContext);
 
        

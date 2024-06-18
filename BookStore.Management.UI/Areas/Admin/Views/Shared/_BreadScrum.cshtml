@@ -1,13 +1,15 @@
 ﻿@using BookStore.Management.UI.Models
+<style>
+    .page-breadcrumb {
+        padding: 0px 35px 0;
+    };
+</style>
 @{
     var breadscrumModel = ViewData["Breadscrumb"] as BreadscrumModel;
 
     if(!string.IsNullOrEmpty(breadscrumModel.Path))
     {
         var segments = breadscrumModel.Path.Split("/");
-
-
-
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-5 align-self-center">

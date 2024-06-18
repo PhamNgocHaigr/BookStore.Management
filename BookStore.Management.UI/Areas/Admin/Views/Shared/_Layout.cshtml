@@ -15,7 +15,11 @@
     <!-- Custom CSS -->
     <link href="~/admin/dist/css/style.min.css" rel="stylesheet" />
     <link href="~/js/toaster/jquery.toast.min.css" rel="stylesheet" />
-
+    <style>
+        .page-wrapper > .container-fluid {
+            padding: 0px 35px 35px 35px;
+            min-height: calc(100vh - 210px)
+        };</style>
 </head>
 
 <body>
@@ -35,8 +39,7 @@
 
         <div class="page-wrapper">
                 <!--BODY -->
-                @RenderBody()
-                @await Html.PartialAsync("_BreadScrum.cshtml")
+                @RenderBody()              
 
         </div>
     </div>

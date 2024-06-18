@@ -16,11 +16,13 @@ namespace BookStore.Management.Domain.Entities
         [Required]
         [StringLength(500)]
         public string Author { get; set; }
+        [StringLength(20)]
+        public string Code { get; set; }
         [StringLength(500)]
         public string Publisher { get; set; }
         [Required]
-        public int Avaiable { get; set; }
-        public double Price { get; set; }
+        public int Available { get; set; }
+        public float Cost { get; set; }
         public DateTime CreateOn { get; set; }
         [Required]
         public bool IsActive { get; set; }
