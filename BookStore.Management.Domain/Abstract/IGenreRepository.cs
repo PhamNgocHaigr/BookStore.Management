@@ -9,7 +9,7 @@ namespace BookStore.Management.Domain.Abstract
 {
     public interface IGenreRepository
     {
-        Task<IEnumerable<Genre>> GetAllGenre();
+        Task<IEnumerable<Genre>> GetAllAsync();
         Task<Genre> GetById(int id);
         Task<bool> Save(Genre genre);
     }

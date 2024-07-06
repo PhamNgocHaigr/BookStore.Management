@@ -52,6 +52,7 @@ namespace BookStore.Management.Infrastructure.Configuration
             services.AddTransient<PasswordHasher<ApplicationUser>>();
             services.AddTransient<ISQLQueryHandler, SQLQueryHandler>();
             services.AddTransient<IUnitOfWork,UnitOfWork>();
+            services.AddTransient<ICommonService, CommonService>();
             services.AddTransient<IImageService, ImageService>();
             services.AddTransient<IAuthenticationService, AuthenticationService>();
             services.AddTransient<IUserService, UserService>();

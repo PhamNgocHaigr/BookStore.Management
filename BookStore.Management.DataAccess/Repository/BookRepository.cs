@@ -36,7 +36,52 @@ namespace BookStore.Management.DataAccess.Repository
             return (result, totalRecords);
         }
 
+        public async Task<Book?> GetBooksByIdAsync(int id)
+        {
+            return await base.GetSingleAsync(x => x.Id == id);
+        }
 
+        public async Task<Book?> GetBooksByCodeAsync(string code)
+        {
+            return await base.GetSingleAsync(x => x.Code == code);
+        }
+
+        public async Task<bool> SaveAsync(Book book)
+        {
+            try
+            {
+                if (book.Id == 0)
+                {
+                    await base.CreateAsync(book);
+                }
+                else
+                {
+                    base.Update(book);
+                }
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public async Task<(IEnumerable<Book>, int)> GetBooksForSiteAsync(int genreId, int pageIndex, int pageSize = 10)
+        {
+            IEnumerable<Book> books;
+
+            books = await GetAllAsync(x => genreId == 0 || x.GenreId == genreId);
+
+            var totalRecords = books.Count();
+
+            books = books.Skip((pageIndex - 1) * pageSize)
+                         .Take(pageIndex * pageSize)
+                         .OrderByDescending(x => x.CreatedOn);
+
+
+            return (books, totalRecords);
+        }
 
 
     }

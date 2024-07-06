@@ -7,6 +7,7 @@ using BookStore.Management.Domain.Entities;
 using BookStore.Management.Domain.Enums;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 
 namespace BookStore.Management.Application
@@ -31,7 +32,7 @@ namespace BookStore.Management.Application
 
         public async Task<ResponseDatatable<GenreDTO>> GetGenreByPagination(RequestDatatable request)
         {
-            var genres = await _unitOfWork.GenreRepository.GetAllGenre();
+            var genres = await _unitOfWork.GenreRepository.GetAllAsync();
 
             var genresDTO = _mapper.Map<IEnumerable<GenreDTO>>(genres);
 
@@ -47,6 +48,20 @@ namespace BookStore.Management.Application
                 Data = result
             };
         }
+
+        public async Task<IEnumerable<SelectListItem>> GetGenresForDropdownlistAsync()
+        {
+            var genres = await _unitOfWork.GenreRepository.GetAllAsync();
+
+            var result = genres.Select(g => new SelectListItem
+            {
+                Value = g.Id.ToString(),
+                Text = g.Name
+            });
+
+            return result;
+        }
+
 
         public async Task<ResponseModel> SaveAsync(GenreViewModel genreVM)
         {

@@ -8,6 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\admin\components\book_savedata.js" />
+    <Content Remove="wwwroot\js\moment.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\admin\components\book_savedata.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\moment.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.3" />
@@ -19,6 +29,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="wwwroot\images\book\" />
     <Folder Include="wwwroot\images\user\" />
   </ItemGroup>
 
@@ -321,6 +332,7 @@
     <None Include="wwwroot\admin\assets\libs\raphael\dev\raphael.vml.js" />
     <None Include="wwwroot\admin\assets\libs\raphael\raphael.min.js" />
     <None Include="wwwroot\admin\assets\libs\raphael\raphael.no-deps.min.js" />
+    <None Include="wwwroot\admin\components\book_savedata.js" />
     <None Include="wwwroot\admin\dist\css\fonts\Gilmer-Bold.svg" />
     <None Include="wwwroot\admin\dist\css\fonts\Gilmer-Heavy.svg" />
     <None Include="wwwroot\admin\dist\css\fonts\Gilmer-Medium.svg" />

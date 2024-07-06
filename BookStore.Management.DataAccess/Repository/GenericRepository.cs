@@ -34,7 +34,7 @@ namespace BookStore.Management.DataAccess.Repository
             return await _applicationDbContext.Set<T>().SingleOrDefaultAsync(expression);
         }
 
-        public async Task Create(T entity)
+        public async Task CreateAsync(T entity)
         {
             await _applicationDbContext.AddAsync(entity);
         }

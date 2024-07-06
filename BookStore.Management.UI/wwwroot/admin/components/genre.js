@@ -16,7 +16,12 @@
         { data: 'name', name: 'name', autoWidth: true },
         { data: 'description', name: 'description', autoWidth: true },
         { data: 'isActive', name: 'isActive', autoWidth: true },
-        { data: 'createOn', name: 'createOn', autoWidth: true } 
+        {
+            data: 'createOn', name: 'createOn', autoWidth: true,
+            render: function (data) {
+                return `<div class="text-center">${moment(data).format("DD/MM/YYYY")}</div>`
+            }  
+        }, 
 
     ];
 
