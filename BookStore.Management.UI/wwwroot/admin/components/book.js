@@ -7,13 +7,13 @@
             render: function (key) {
                 return `
                     <span data-key="${key}">
-                        <a href="#" class="btn-edit"><i class="fas fa-pencil-alt"></i></a> &nbsp;
+                        <a href="/admin/book/savedata?id=${key}" class="btn-edit"><i class="fas fa-pencil-alt"></i></a> &nbsp;
                         <a href="#" class="btn-delete"><i class="fas fa-trash"></i></a>
                     </span>
                 `;
             }
         },
-        { data: 'genreName', name: 'genreName', autoWidth: true, width: "150px", },
+        { data: 'genreName', name: 'genreName', autoWidth: true },
         { data: 'code', name: 'code', autoWidth: true },
         { data: 'title', name: 'name', autoWidth: true },
         {
@@ -45,6 +45,27 @@
  
     registerDatatable(elementName, columns, urlApi);
 
+    $(document).on('click', '.btn-delete', function () {
+
+        const key = $(this).closest('span').data('key');
+
+        $.ajax({
+            url: `/admin/book/delete/${key}`,
+            dataType: 'json',
+            method: 'POST',
+            success: function (response) {
+
+                if (!response) {
+                    showToaster("Error", "Delete failed.");
+                    return;
+                }
+
+                $(elementName).DataTable().ajax.reload();
+                showToaster("Success", "Delete successful");
+            }
+        })
+
+    });
   
 
  

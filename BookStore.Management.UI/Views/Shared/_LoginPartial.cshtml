@@ -4,10 +4,20 @@
 @inject UserManager<ApplicationUser> UserManager
 
 <ul class="navbar-nav">
+    <li style="position:relative;" class="pt-2"> 
+        <a href="/cart">
+            <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+            <span class="cart-number">@(Convert.ToInt32(ViewData["NumberCart"] ?? 0))</span>
+        </a>
+    </li>
+    <li class="pt-2 text-light">
+        &nbsp; |
+    </li>
+
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+        <a  class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
     </li>
     <li class="nav-item">
         <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">

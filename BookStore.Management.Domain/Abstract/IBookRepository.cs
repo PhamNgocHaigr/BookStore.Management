@@ -11,6 +11,7 @@ namespace BookStore.Management.Domain.Abstract
     {
         Task<Book?> GetBooksByCodeAsync(string code);
         Task<Book?> GetBooksByIdAsync(int id);
+        Task<IEnumerable<Book>> GetBooksByListCodeAsync(string[] codes);
         Task<(IEnumerable<T>, int)> GetBooksByPaginationAsync<T>(int pageIndex, int pageSize, string keyword);
         Task<(IEnumerable<Book>, int)> GetBooksForSiteAsync(int genreId, int pageIndex, int pageSize = 10);
         Task<bool> SaveAsync(Book book);

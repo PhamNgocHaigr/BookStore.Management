@@ -77,6 +77,14 @@ namespace BookStore.Management.UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _bookService.DeleteAsync(id);
+
+            return Json(true);
+        }
+
+        [HttpPost]
         public async Task<IActionResult> GetBooksPagination(RequestDatatable requestDatatable)
         {
             var result = await _bookService.GetBooksByPaginationAsyns(requestDatatable);

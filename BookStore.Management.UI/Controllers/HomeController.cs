@@ -1,3 +1,4 @@
+using BookStore.Management.Application.Abstracts;
 using BookStore.Management.UI.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -6,16 +7,22 @@ namespace BookStore.Management.UI.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+    
+        private readonly IBookService _bookService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IBookService bookService)
         {
-            _logger = logger;
+            _bookService = bookService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var result = await _bookService.GetBooksForSiteAsync(0, 1, 100);
+
+            var books = result.Books.OrderBy(x => Guid.NewGuid())
+                                    .Take(5);
+
+            return View(books);
         }
 
         public IActionResult Privacy()

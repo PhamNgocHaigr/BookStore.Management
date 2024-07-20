@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace BookStore.Management.Infrastructure.Image
+namespace BookStore.Management.Domain.Abstracts
 {
     public interface IImageService
     {

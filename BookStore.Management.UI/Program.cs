@@ -14,6 +14,10 @@ builder.Services.ConfigureIdentity(builder.Configuration);
 builder.Services.AddDependencyInjection();
 builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromHours(1);
+});
 
 var app = builder.Build();
 app.AutoMigration().GetAwaiter().GetResult();
@@ -45,6 +49,7 @@ app.UseStaticFiles(new StaticFileOptions
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseSession();
 
 //app.MapControllerRoute(
 //    name: "default",

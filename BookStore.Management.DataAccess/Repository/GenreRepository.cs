@@ -31,7 +31,7 @@ namespace BookStore.Management.DataAccess.Repository
                 }
                 else
                 {
-                    await base.Update(genre);
+                     base.Update(genre);
                 }
                 return true;
             }

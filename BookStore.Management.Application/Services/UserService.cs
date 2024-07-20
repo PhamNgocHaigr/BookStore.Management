@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using BookStore.Management.Application.Abstracts;
 using BookStore.Management.Application.DTOs;
+using BookStore.Management.Application.DTOs.User;
+using BookStore.Management.Domain.Abstracts;
 using BookStore.Management.Domain.Entities;
-using BookStore.Management.Infrastructure.Image;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

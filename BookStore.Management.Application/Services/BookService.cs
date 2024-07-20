@@ -1,17 +1,15 @@
 ﻿using AutoMapper;
 using BookStore.Management.Application.Abstracts;
 using BookStore.Management.Application.DTOs;
+using BookStore.Management.Application.DTOs.Book;
 using BookStore.Management.Application.DTOs.ViewModels;
 using BookStore.Management.DataAccess.Repository;
+using BookStore.Management.Domain.Abstracts;
 using BookStore.Management.Domain.Entities;
 using BookStore.Management.Domain.Enums;
-using BookStore.Management.Infrastructure.Image;
+
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace BookStore.Management.Application.Services
 {
@@ -40,14 +38,33 @@ namespace BookStore.Management.Application.Services
                 Draw = request.Draw,
                 RecordsTotal = totalRecords,
                 RecordsFiltered = totalRecords,
-                Data = books.ToList()
+                Data = books
             };
-        }
+        }   
         public async Task<BookViewModel> GetBooksByIdAsync(int id)
         {
             var book = await _unitOfWork.BookRepository.GetBooksByIdAsync(id);
             return _mapper.Map<BookViewModel>(book);
         }
+
+        public async Task<BookForSiteDTO> GetBooksForSiteAsync(int genreId, int pageIndex, int pageSize = 10)
+        {
+            var (books, totalRecords) = await _unitOfWork.BookRepository.GetBooksForSiteAsync(genreId, pageIndex, pageSize);
+            var bookDTOs = _mapper.Map<IEnumerable<BookDTO>>(books);
+            int currentDisplayingItems = totalRecords - (pageIndex * pageSize) <= 0 ? totalRecords : pageIndex * pageSize;
+            bool isDisableButton = totalRecords - (pageIndex * pageSize) <= 0 ? true : false;
+            double progressingValue = totalRecords == 0 ? 0 : (pageIndex * pageSize) * 100 / totalRecords;
+            
+            return new BookForSiteDTO
+            {
+                Books = bookDTOs,
+                CurrentRecord = currentDisplayingItems,
+                IsDisable = isDisableButton,
+                ProgressingValue = progressingValue,
+                TotalRecord = totalRecords
+            };
+        }   
+
 
         public async Task<ResponseModel> SaveAsync(BookViewModel bookVM)
         {
@@ -73,7 +90,7 @@ namespace BookStore.Management.Application.Services
                 book.IsActive = bookVM.IsActive;
             }
 
-            var result = await _unitOfWork.BookRepository.SaveAsync(book);
+            var result = await _unitOfWork.BookRepository.SaveAsync(book);  
             await _unitOfWork.SaveChangesAsync();
 
             if (result)
@@ -112,6 +129,23 @@ namespace BookStore.Management.Application.Services
             return newCode;
         }
 
-        
+        public async Task<IEnumerable<BookCartDTO>> GetBooksByListCodeAsync(string[] codes)
+        {
+            var books = await _unitOfWork.BookRepository.GetBooksByListCodeAsync(codes);
+
+            var result = _mapper.Map<IEnumerable<BookCartDTO>>(books);
+
+            return result;
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            var book = await _unitOfWork.BookRepository.GetBooksByIdAsync(id);
+
+            book.IsActive = false;
+
+            await _unitOfWork.SaveChangesAsync();
+        }
+
     }
 }

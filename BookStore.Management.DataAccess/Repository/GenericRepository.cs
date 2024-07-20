@@ -34,15 +34,17 @@ namespace BookStore.Management.DataAccess.Repository
             return await _applicationDbContext.Set<T>().SingleOrDefaultAsync(expression);
         }
 
-        public async Task CreateAsync(T entity)
+        public async Task<T> CreateAsync(T entity)
         {
             await _applicationDbContext.AddAsync(entity);
+            return entity;
         }
 
-        public async Task Update(T entity)
+        public  T Update(T entity)
         {
             _applicationDbContext.Set<T>().Attach(entity);
             _applicationDbContext.Entry(entity).State = EntityState.Modified;
+            return entity;
         }
 
         public async Task Delete(T entity)

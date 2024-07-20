@@ -1,10 +1,8 @@
 ﻿using BookStore.Management.DataAccess.Data;
 using BookStore.Management.Domain.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
+
 
 namespace BookStore.Management.DataAccess.Repository
 {
@@ -24,10 +22,14 @@ namespace BookStore.Management.DataAccess.Repository
             _sqlQueryHandler = sqLQueryHandler;
         }
 
+        public DbSet<T> Table<T>() where T : class => _applicationDbContext.Set<T>();
+
         public IBookRepository BookRepository => _bookRepository ??= new BookRepository(_applicationDbContext, _sqlQueryHandler);
         public IGenreRepository GenreRepository => _genreRepository ??= new GenreRepository(_applicationDbContext);
 
-       
+        
+        
+        
 
         public async Task SaveChangesAsync()
         {

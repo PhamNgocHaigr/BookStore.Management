@@ -1,5 +1,6 @@
 ﻿using BookStore.Management.Application.Abstracts;
 using BookStore.Management.Application.DTOs;
+using BookStore.Management.Application.DTOs.User;
 using BookStore.Management.UI.Ultility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

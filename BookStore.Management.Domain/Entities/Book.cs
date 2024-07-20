@@ -28,7 +28,6 @@ namespace BookStore.Management.Domain.Entities
         [Required]
         public DateTime CreatedOn { get; set; }
         [Required]
-        [StringLength(250)]
         public string? Description { get; set; }
         public bool IsActive { get; set; }
         [ForeignKey(nameof(Genre))]

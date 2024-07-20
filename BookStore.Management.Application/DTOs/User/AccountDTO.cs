@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookStore.Management.Application.DTOs
+namespace BookStore.Management.Application.DTOs.User
 {
     public class AccountDTO
     {
@@ -15,7 +15,7 @@ namespace BookStore.Management.Application.DTOs
         [Required]
         public string RoleName { get; set; }
 
-        [Required(ErrorMessage ="Username must be not empty")]
+        [Required(ErrorMessage = "Username must be not empty")]
         public string Username { get; set; }
 
         [Required(ErrorMessage = "Fullname must be not empty")]
@@ -26,7 +26,7 @@ namespace BookStore.Management.Application.DTOs
         public string? Password { get; set; }
 
         [Required(ErrorMessage = "Email must be not empty")]
-        [RegularExpression("^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$", ErrorMessage ="Invalid Email")]
+        [RegularExpression("^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$", ErrorMessage = "Invalid Email")]
         public string Email { get; set; }
 
         public string? Phone { get; set; }

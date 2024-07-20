@@ -1,6 +1,4 @@
-﻿
-
-namespace BookStore.Management.Application.DTOs
+﻿namespace BookStore.Management.Application.DTOs.Genre
 {
     public class GenreDTO
     {

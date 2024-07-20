@@ -130,8 +130,7 @@ namespace BookStore.Management.DataAccess.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("GenreId")
                         .HasColumnType("int");
@@ -511,7 +510,7 @@ namespace BookStore.Management.DataAccess.Migrations
             modelBuilder.Entity("BookStore.Management.Domain.Entities.Book", b =>
                 {
                     b.HasOne("BookStore.Management.Domain.Entities.Genre", "Genre")
-                        .WithMany()
+                        .WithMany("Books")
                         .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -635,6 +634,11 @@ namespace BookStore.Management.DataAccess.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("BookStore.Management.Domain.Entities.Genre", b =>
+                {
+                    b.Navigation("Books");
                 });
 #pragma warning restore 612, 618
         }

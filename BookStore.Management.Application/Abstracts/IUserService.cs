@@ -1,4 +1,5 @@
 ﻿using BookStore.Management.Application.DTOs;
+using BookStore.Management.Application.DTOs.User;
 using System.Threading.Tasks;
 
 namespace BookStore.Management.Application.Abstracts

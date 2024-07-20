@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BookStore.Management.Application.Abstracts;
 using BookStore.Management.Application.DTOs;
+using BookStore.Management.Application.DTOs.Genre;
 using BookStore.Management.Application.DTOs.ViewModels;
 using BookStore.Management.DataAccess.Repository;
 using BookStore.Management.Domain.Entities;
@@ -8,6 +9,7 @@ using BookStore.Management.Domain.Enums;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace BookStore.Management.Application
@@ -87,6 +89,18 @@ namespace BookStore.Management.Application
                Message = successMessage,    
                Status = result,
             }; 
+        }
+
+        public IEnumerable<GenreSiteDTO> GetGenresListForSite()
+        {
+            var result = _unitOfWork.Table<Genre>().Select(x => new GenreSiteDTO
+            {
+                Id = x.Id,
+                Name = x.Name,
+                TotalBooks = x.Books.Count
+            }).AsNoTracking();
+
+            return result;
         }
 
 

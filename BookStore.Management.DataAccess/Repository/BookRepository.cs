@@ -46,6 +46,11 @@ namespace BookStore.Management.DataAccess.Repository
             return await base.GetSingleAsync(x => x.Code == code);
         }
 
+        public async Task<IEnumerable<Book>> GetBooksByListCodeAsync(string[] codes)
+        {
+            return await base.GetAllAsync(x => codes.Contains(x.Code));
+        }
+
         public async Task<bool> SaveAsync(Book book)
         {
             try
@@ -56,7 +61,7 @@ namespace BookStore.Management.DataAccess.Repository
                 }
                 else
                 {
-                    base.Update(book);
+                     base.Update(book);
                 }
 
                 return true;
@@ -80,7 +85,7 @@ namespace BookStore.Management.DataAccess.Repository
                          .OrderByDescending(x => x.CreatedOn);
 
 
-            return (books, totalRecords);
+            return (books, totalRecords);   
         }
 
 
