@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -9,8 +10,10 @@ namespace BookStore.Management.Domain.Entities
 {
     public class BookCatalogue : BaseEntity
     {
-        public DateTime CreateOn { get; set; }
+        public DateTime CreatedOn { get; set; }
+        [Required]
         public int BookId { get; set; }
+        [Required]
         public int CatalogueId { get; set; }
 
         [ForeignKey(nameof(BookId))]

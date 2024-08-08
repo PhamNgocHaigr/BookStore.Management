@@ -10,18 +10,13 @@ namespace BookStore.Management.Domain.Entities
 {
     public class Cart : BaseEntity
     {
-        [StringLength(200)]
+        [Required]
+        [StringLength(20)]
         public string Code { get; set; }
         [StringLength(1000)]
-        public string Note { get; set; }
+        public string? Note { get; set; }
         public DateTime CreatedOn { get; set; }
-        public bool Status { get; set; }
-        public bool IsActive { get; set; }
-        [StringLength(450)]
-        public string? UserId { get; set; }
-
-        [ForeignKey(nameof(UserId))]
-        public ApplicationUser ApplicationUser { get; set; }
+        public short Status { get; set; }
 
     }
 }

@@ -1,12 +1,15 @@
 ﻿using BookStore.Management.Application;
 using BookStore.Management.Application.Abstracts;
 using BookStore.Management.Application.Services;
+using BookStore.Management.DataAccess.Abstract;
 using BookStore.Management.DataAccess.Dapper;
 using BookStore.Management.DataAccess.Data;
 using BookStore.Management.DataAccess.Repository;
 using BookStore.Management.Domain.Abstract;
 using BookStore.Management.Domain.Abstracts;
 using BookStore.Management.Domain.Entities;
+using BookStore.Management.Infrastructure.Services;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -54,11 +57,16 @@ namespace BookStore.Management.Infrastructure.Configuration
             services.AddTransient<IUnitOfWork,UnitOfWork>();
             services.AddTransient<ICommonService, CommonService>();
             services.AddTransient<IImageService, ImageService>();
+            services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IAuthenticationService, AuthenticationService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<IGenreService, GenreService>();
             services.AddTransient<IBookService, BookService>();
+            services.AddTransient<IUserAddressService, UserAddressService>();
+            services.AddTransient<ICartService, CartService>();
+            services.AddTransient<IOrderService, OrderService>();
+
 
 
 

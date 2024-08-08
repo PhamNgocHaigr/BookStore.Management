@@ -29,7 +29,6 @@ namespace BookStore.Management.Domain.Entities
         public DateTime CreatedOn { get; set; }
         [Required]
         public string? Description { get; set; }
-        public bool IsActive { get; set; }
         [ForeignKey(nameof(Genre))]
         public int GenreId { get; set; }
         public Genre Genre { get; set; }

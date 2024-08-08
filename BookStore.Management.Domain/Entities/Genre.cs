@@ -15,7 +15,6 @@ namespace BookStore.Management.Domain.Entities
         [StringLength(1000)]
         public string? Description { get; set; }
         [Required]
-        public bool IsActive { get; set; }
         public DateTime CreateOn { get; set; }
         public ICollection<Book> Books { get; set; }
     }

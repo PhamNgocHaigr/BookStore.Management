@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 
 
-namespace BookStore.Management.Application.Services
+namespace BookStore.Management.Infrastructure.Services
 {
     public class ImageService : IImageService
     {

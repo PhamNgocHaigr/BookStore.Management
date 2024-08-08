@@ -9,6 +9,7 @@ namespace BookStore.Management.UI.Areas.Admin.Models
         [Required(ErrorMessage = "Username must be not empty")]
         [MinLength(3, ErrorMessage ="Password must be greater than 3 characters")]
         public string Password { get; set; }
+        public string? ReturnUrl { get; set; }
         public bool HasRememberMe { get; set; }
     }
     public class LoginSiteModel
@@ -20,5 +21,6 @@ namespace BookStore.Management.UI.Areas.Admin.Models
         public string Password { get; set; }
         public string? ReturnUrl { get; set; }
         public string Captcha { get; set; }
+        public bool HasRememberMe { get; set; }
     }
 }

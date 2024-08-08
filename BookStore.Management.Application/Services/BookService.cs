@@ -3,7 +3,7 @@ using BookStore.Management.Application.Abstracts;
 using BookStore.Management.Application.DTOs;
 using BookStore.Management.Application.DTOs.Book;
 using BookStore.Management.Application.DTOs.ViewModels;
-using BookStore.Management.DataAccess.Repository;
+using BookStore.Management.DataAccess.Abstract;
 using BookStore.Management.Domain.Abstracts;
 using BookStore.Management.Domain.Entities;
 using BookStore.Management.Domain.Enums;
@@ -91,7 +91,7 @@ namespace BookStore.Management.Application.Services
             }
 
             var result = await _unitOfWork.BookRepository.SaveAsync(book);  
-            await _unitOfWork.SaveChangesAsync();
+            await _unitOfWork.SaveChangeAsync();
 
             if (result)
             {
@@ -144,7 +144,7 @@ namespace BookStore.Management.Application.Services
 
             book.IsActive = false;
 
-            await _unitOfWork.SaveChangesAsync();
+            await _unitOfWork.SaveChangeAsync();
         }
 
     }

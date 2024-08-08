@@ -3,6 +3,7 @@
     ViewData["Title"] = "Book List";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+<link href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet" />
 
 @await Html.PartialAsync("~/Areas/Admin/Views/Shared/_BreadScrum.cshtml")
 <div class="container-fluid">
@@ -43,7 +44,7 @@
 
 
 <!-- order table -->
-<link href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet" />
+
 
 @section scripts {
     <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>

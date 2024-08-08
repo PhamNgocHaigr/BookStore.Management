@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BookStore.Management.Application\BookStore.Management.Application.csproj" />
-    <ProjectReference Include="..\BookStore.Management.DataAccess\BookStore.Management.DataAccess.csproj" />
+    <PackageReference Include="sib_api_v3_sdk" Version="4.0.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\BookStore.Management.Application\BookStore.Management.Application.csproj" />
+    <ProjectReference Include="..\BookStore.Management.DataAccess\BookStore.Management.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

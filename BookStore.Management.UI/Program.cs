@@ -1,6 +1,7 @@
 using BookStore.Management.DataAccess;
 using BookStore.Management.DataAccess.Data;
 using BookStore.Management.Infrastructure.Configuration;
+using BookStore.Management.UI.Ultility;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,11 +9,14 @@ var builder = WebApplication.CreateBuilder(args);
 var builderRazor = builder.Services.AddRazorPages();
 
 // Add services to the container.
-
+// xsmtpsib-1b2f1a661e9531a9f69e7ad40ff98e76ec08de8c6658fde0c66fc3358ba1510c-GV58S4QE29sTr3AP
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.ConfigureIdentity(builder.Configuration);
 builder.Services.AddDependencyInjection();
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Filters.Add(new CommonDataActionFiler());
+});
 builder.Services.AddAutoMapper();
 builder.Services.AddSession(options =>
 {
@@ -47,7 +51,7 @@ app.UseStaticFiles(new StaticFileOptions
 });
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseSession();
 

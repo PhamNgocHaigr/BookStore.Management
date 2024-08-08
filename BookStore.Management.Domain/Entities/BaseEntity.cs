@@ -13,5 +13,7 @@ namespace BookStore.Management.Domain.Entities
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        [Required]
+        public bool IsActive { get; set; }
     }
 }

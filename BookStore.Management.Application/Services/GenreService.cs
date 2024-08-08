@@ -3,6 +3,7 @@ using BookStore.Management.Application.Abstracts;
 using BookStore.Management.Application.DTOs;
 using BookStore.Management.Application.DTOs.Genre;
 using BookStore.Management.Application.DTOs.ViewModels;
+using BookStore.Management.DataAccess.Abstract;
 using BookStore.Management.DataAccess.Repository;
 using BookStore.Management.Domain.Entities;
 using BookStore.Management.Domain.Enums;
@@ -77,7 +78,7 @@ namespace BookStore.Management.Application
 
             var result = await _unitOfWork.GenreRepository.Save(genre);
 
-            await _unitOfWork.SaveChangesAsync();
+            await _unitOfWork.SaveChangeAsync();
 
             var actionType = genreVM.Id == 0 ? ActionType.Insert : ActionType.Update;
             var successMessage = $"{(genreVM.Id == 0 ? "Insert" : "Update")} successful.";
@@ -112,7 +113,7 @@ namespace BookStore.Management.Application
             {
                 genre.IsActive = false;
                 await _unitOfWork.GenreRepository.Save(genre);
-                await _unitOfWork.SaveChangesAsync();
+                await _unitOfWork.SaveChangeAsync();
                 return true;
             }
             return false;
